@@ -1,4 +1,6 @@
-<h4>Votre Panier</h4>
+
+<h4 *ngIf="(articlePanier$ | async).length >= 1">Votre Panier</h4>
+<h4 *ngIf="(articlePanier$ | async).length == 0">Votre panier est vide</h4>
 <ul
   class="collection with-header"
   *ngFor="let item of (articlePanier$ | async)"
