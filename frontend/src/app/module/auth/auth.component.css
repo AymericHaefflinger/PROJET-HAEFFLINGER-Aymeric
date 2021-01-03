@@ -1,0 +1,20 @@
+form{
+  text-align:center;
+  margin: 10px;
+}
+
+.has-error{
+  color: red;
+}
+
+body {
+  font-family: Lato;
+}
+h4 {
+  text-align: center;
+}
+ul {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}

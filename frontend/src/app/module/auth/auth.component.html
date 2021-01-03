@@ -1,0 +1,24 @@
+<div>
+    <form [formGroup]="compteForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>
+                Adresse E-mail
+                <input type="email"  class="form-control" formControlName="mail"  placeholder="Entrez votre adresse e-mail" >
+            </label>
+            <div *ngIf="mail.invalid && mail.errors.notAnEmailAddress">
+            <p class="has-error">L'adresse mail entrée est invalide.</p>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>
+                Mot de passe
+                <input type="password"  id="pass" formControlName="password"  class="form-control" >
+            </label>
+        </div>
+
+    
+        <button type="submit"  class="btn btn-primary" [disabled]="!compteForm.valid">Submit</button>
+    </form>
+  </div>

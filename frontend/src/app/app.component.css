@@ -1,0 +1,13 @@
+body {
+  font-family: Lato;
+}
+
+h3{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+produit{
+  display: flex;
+  flex-wrap: wrap;
+}

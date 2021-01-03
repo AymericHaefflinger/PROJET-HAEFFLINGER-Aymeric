@@ -1,0 +1,27 @@
+{
+    "name": "cnam/tp-web",
+    "authors": [
+        {
+            "name": "Aymeric Haefflinger",
+            "email": "aymeric.haefflinger@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "php-di/php-di": "^6.3",
+        "slim/psr7": "^1.2",
+        "tuupola/slim-jwt-auth": "^3.5",
+        "vlucas/phpdotenv": "^5.2",
+        "doctrine/orm": "2.*",
+        "symfony/yaml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "psr-0": {
+            "": "app/Doctrine/src/"
+        },
+        "classmap": ["app/Doctrine/src"]
+    }
+}

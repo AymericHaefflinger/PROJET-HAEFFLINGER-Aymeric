@@ -1,0 +1,22 @@
+
+<div *ngIf="(user$ | async).length >=1 ; else elseBlock">
+
+  <div class="recapContainer">
+      <h4>Votre Compte</h4>
+      <ul *ngFor="let userx of (user$ | async); last as isLast" class="collection with-header">
+        <div *ngIf="isLast">
+        <li>
+          Nom : {{userx.prenom}}
+        </li>
+        <li>Prénom : {{userx.nom}}</li>
+        <li>
+          Mail : {{userx.mail}}
+        </li>
+      </div>
+      </ul>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <h4>Vous n'êtes pas connecté</h4>
+</ng-template>

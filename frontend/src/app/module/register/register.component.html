@@ -1,0 +1,42 @@
+<div>
+    <form [formGroup]="compteForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group" >
+            <label>
+                Nom
+                <input  type="text"  class="form-control" formControlName="name" placeholder="Entrez votre nom" >
+            </label>
+            <div *ngIf="name.invalid && name.errors.number">
+              <p class="has-error">Votre nom ne peut pas contenir de numéro.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Prénom
+                <input type="text"  class="form-control" formControlName="surname"  placeholder="Entrez votre prénom" >
+            </label>
+             <div *ngIf="surname.invalid && surname.errors.number">
+              <p class="has-error">Votre prénom ne peut pas contenir de numéro.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Adresse E-mail
+                <input type="email"  class="form-control" formControlName="mail"  placeholder="Entrez votre adresse e-mail" >
+            </label>
+            <div *ngIf="mail.invalid && mail.errors.notAnEmailAddress">
+            <p class="has-error">L'adresse mail entrée est invalide.</p>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>
+                Mot de passe
+                <input type="password"  id="pass" formControlName="password"  class="form-control" >
+            </label>
+        </div>
+
+    
+        <button type="submit"  class="btn btn-primary" [disabled]="!compteForm.valid">Submit</button>
+    </form>
+  </div>

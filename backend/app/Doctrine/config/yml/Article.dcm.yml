@@ -1,0 +1,32 @@
+Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+        prix:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+        img:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

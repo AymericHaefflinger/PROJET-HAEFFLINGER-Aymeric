@@ -1,0 +1,38 @@
+User:
+    type: entity
+    table: user
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        mail:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+        nom:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+        mdp:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
