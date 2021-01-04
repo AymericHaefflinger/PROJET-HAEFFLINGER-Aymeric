@@ -27,7 +27,7 @@ export class DetailComponent {
   getData(): void {
     this.HttpServiceService.getData().subscribe(Articles =>
       Articles.forEach((myObject, index) => {
-        if (myObject.id == this.route.snapshot.params.id) {
+        if (myObject.nom == this.route.snapshot.params.id) {
           this.art = myObject;
         }
       })

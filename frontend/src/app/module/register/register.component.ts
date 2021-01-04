@@ -31,7 +31,7 @@ export class registerComponent implements OnInit {
     name : ['Haefflinger', [Validators.required, this.noNumberValidator]],
     surname: ['Aymeric', [Validators.required, this.noNumberValidator]],
     mail : ['monMail@mail.com', [Validators.required, this.emailValidator]],
-    password: ['monMDP', [Validators.required]],
+    password: ['modepass', [Validators.required]],
   })
 
   constructor(private fb : FormBuilder,

@@ -6,17 +6,23 @@ import { patch, removeItem } from "@ngxs/store/operators";
 
 export interface ArticleStateModel {
   articles: Article[];
+  prix: number;
 }
 
 @State<ArticleStateModel>({
   name: "articles",
-  defaults: { articles: [] }
+  defaults: { articles: [], prix: 0 }
 })
 @Injectable()
 export class ArticleState {
   @Selector()
   static getArticles(state: ArticleStateModel) {
     return state.articles;
+  }
+
+  @Selector()
+  static getPrix(state: ArticleStateModel) {
+    return state.prix;
   }
 
   @Action(AddArticle)
@@ -26,7 +32,8 @@ export class ArticleState {
   ) {
     const state = getState();
     patchState({
-      articles: [...state.articles, payload]
+      articles: [...state.articles, payload],
+      prix: state.prix + +payload.prix.slice(0, -1)
     });
   }
 
@@ -36,6 +43,9 @@ export class ArticleState {
     { payload }: RemoveArticle
   ) {
     const state = getState();
+    patchState({
+      prix: state.prix - +payload.prix.slice(0, -1)
+    });
     state.articles.splice(state.articles.indexOf(payload), 1);
   }
 }

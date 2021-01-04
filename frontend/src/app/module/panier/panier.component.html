@@ -18,3 +18,4 @@
     >
   </li>
 </ul>
+<h5 *ngIf="(articlePanier$ | async).length >= 1">Prix total : {{prixPanier$ | async}}€</h5>

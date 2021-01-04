@@ -2,8 +2,8 @@
 <div *ngIf="(user$ | async).length >=1 ; else elseBlock">
 
   <div class="recapContainer">
-      <h4>Votre Compte</h4>
-      <ul *ngFor="let userx of (user$ | async); last as isLast" class="collection with-header">
+      <h4>Vos informations</h4>
+      <ul *ngFor="let userx of (user$ | async); last as isLast" class="collection with-header containerPadding">
         <div *ngIf="isLast">
         <li>
           Nom : {{userx.prenom}}
@@ -15,8 +15,22 @@
       </div>
       </ul>
   </div>
+
+  <div class="recapContainer">
+    <h4>Modifier vos informations</h4>
+    <ul *ngFor="let userx of (user$ | async); last as isLast" class="collection with-header containerPadding">
+      <div *ngIf="isLast">
+      <li> <a>Modifier le prénom</a> </li>
+      <li> <a>Modifier le nom</a> </li>
+      <li> <a>Modifier le mail</a> </li>
+      <li> <a>Modifier le mot de passe</a> </li>
+    </div>
+    </ul>
+  </div>
+
 </div>
 
 <ng-template #elseBlock>
   <h4>Vous n'êtes pas connecté</h4>
+  <h6>Pour accéder à votre espace vous pouvez créer un compte ou vous connecter à un compte déja créé</h6>
 </ng-template>

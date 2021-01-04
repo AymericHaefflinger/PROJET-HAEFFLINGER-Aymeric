@@ -6,6 +6,8 @@ import { Article } from "../article/article";
 import { Store, Select } from "@ngxs/store";
 import { AddArticle } from "../article/article.action";
 import { ArticleState } from "../article/article.state";
+import { User } from "../../models/user";
+import { UserState } from "../../models/user.state";
 import { Observable } from "rxjs";
 
 @Component({
@@ -15,10 +17,15 @@ import { Observable } from "rxjs";
 })
 export class HeaderComponent {
   articlePanier$: Observable<Article[]>;
+  user$: Observable<User[]>;
+
 
   constructor(private store: Store) {}
 
   ngOnInit() {
     this.articlePanier$ = this.store.select(ArticleState.getArticles);
-  }
+      this.user$ = this.store.select(UserState.getUser);
+      this.user$.subscribe(res => console.log(res));
+    }
+  
 }

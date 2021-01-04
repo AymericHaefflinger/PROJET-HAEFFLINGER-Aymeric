@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
   }
 
   compteForm : FormGroup = this.fb.group({
-    mail : ['aymeric@mail.com', [Validators.required, this.emailValidator]],
+    mail : ['monMail@mail.com', [Validators.required, this.emailValidator]],
     password: ['modepass', [Validators.required]],
   })
 

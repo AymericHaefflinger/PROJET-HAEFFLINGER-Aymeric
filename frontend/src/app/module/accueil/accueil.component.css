@@ -1,6 +1,14 @@
 body {
     font-family: Lato;
   }
-  h4 {
-    text-align: center;
-  }
+h4, h6 {
+  text-align: center;
+}
+img{
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 50%;
+  filter: drop-shadow(1px 1px 10px black);
+}

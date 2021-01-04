@@ -17,10 +17,12 @@ Rechercher
   <img src="{{ art.img }}" />
   <h4>{{ art.nom }}</h4>
   <p>{{ art.prix }}</p>
-  <button class="btn btn-primary" (click)="addArticle(art)">
-    Ajouter au panier
-  </button>
 
-  <a routerLink="{{ art.id }}" class="btn btn-primary">Détails</a>
+  <div>
+    <a class="btn btn-primary" (click)="addArticle(art)">
+      Ajouter au panier
+    </a>
+    <a routerLink="{{ art.nom }}" class="btn btn-primary">Détails</a>
+  </div>
 </div>
 </div>

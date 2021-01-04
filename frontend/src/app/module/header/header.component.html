@@ -1,8 +1,8 @@
 <nav>
     <div class="nav-wrapper teal lighten-2">
-      <a erLink="/" class="brand-logo">Nos jeux</a>
+      <a routerLink="/" class="brand-logo">Soc&Thé</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/compte">Mon Compte</a></li>
+        <li *ngIf="(user$ | async).length >=1"><a routerLink="/compte">Mon Compte</a></li>
         <li><a routerLink="/auth">Connexion</a></li>
         <li><a routerLink="/register">S'inscrire</a></li>
         <li><a routerLink="../magasin/catalogue">Catalogue</a></li>

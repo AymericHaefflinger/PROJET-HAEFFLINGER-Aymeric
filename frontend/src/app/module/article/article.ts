@@ -7,4 +7,5 @@ export interface Article {
 
 export class articleStateModel {
   articles: Article[];
+  prix: number;
 }

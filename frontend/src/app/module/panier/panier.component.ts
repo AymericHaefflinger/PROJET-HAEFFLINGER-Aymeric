@@ -16,14 +16,17 @@ import { Observable } from "rxjs";
 })
 export class PanierComponent {
   articlePanier$: Observable<Article[]>;
+  prixPanier$: Observable<number>;
 
   constructor(private store: Store) {}
 
   ngOnInit() {
     this.articlePanier$ = this.store.select(ArticleState.getArticles);
+    this.prixPanier$ = this.store.select(ArticleState.getPrix);
   }
 
   removeArticle(a: Article) {
     this.store.dispatch(new RemoveArticle(a)).subscribe();
+    console.log(this.prixPanier$);
   }
 }
