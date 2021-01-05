@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import { patch, removeItem } from "@ngxs/store/operators";
 
 export interface UserStateModel {
-  user: User[];
+  user: User;
   token: string;
   isConnected: Boolean;
 }
@@ -13,7 +13,7 @@ export interface UserStateModel {
 @State<UserStateModel>({
   name: "user",
   defaults: { 
-    user: [], 
+    user: null, 
     token:"",
     isConnected: false
   }
@@ -38,12 +38,13 @@ export class UserState {
 
   @Action(AddUser)
   add(
-    { getState, patchState }: StateContext<UserStateModel>,
+    { getState, patchState, setState }: StateContext<UserStateModel>,
     { payload }: AddUser
   ) {
     const state = getState();
-    patchState({
-      user: [...state.user, payload],
+    setState({
+      ...state,
+      user: payload,
       isConnected: true
     });
   }
@@ -54,6 +55,7 @@ export class UserState {
     {} : DisconnectUser){
   
       patchState({
+          user: null,
           isConnected: false,
           token: ""
       });

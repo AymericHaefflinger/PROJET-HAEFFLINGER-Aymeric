@@ -2,12 +2,12 @@ import { Component, Input } from "@angular/core";
 import { from, of, interval } from "rxjs";
 import { filter } from "rxjs/operators";
 import { HttpServiceService } from "../../../http-service.service";
-import { Article } from "../article/article";
+import { Article } from "../../models/article/article";
 import { Store, Select } from "@ngxs/store";
-import { AddArticle } from "../article/article.action";
-import { ArticleState } from "../article/article.state";
-import { User } from "../../models/user";
-import { UserState } from "../../models/user.state";
+import { AddArticle } from "../../models/article/article.action";
+import { ArticleState } from "../../models/article/article.state";
+import { User } from "../../models/user/user";
+import { UserState } from "../../models/user/user.state";
 import { Observable } from "rxjs";
 
 @Component({
@@ -17,7 +17,7 @@ import { Observable } from "rxjs";
 })
 export class HeaderComponent {
   articlePanier$: Observable<Article[]>;
-  user$: Observable<User[]>;
+  user$: Observable<User>;
 
 
   constructor(private store: Store) {}
@@ -25,7 +25,6 @@ export class HeaderComponent {
   ngOnInit() {
     this.articlePanier$ = this.store.select(ArticleState.getArticles);
       this.user$ = this.store.select(UserState.getUser);
-      this.user$.subscribe(res => console.log(res));
     }
   
 }

@@ -18,8 +18,8 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { NgxsModule } from "@ngxs/store";
-import { ArticleState } from "./module/article/article.state";
-import { UserState } from "./models/user.state"
+import { ArticleState } from "./models/article/article.state";
+import { UserState } from "./models/user/user.state"
 
 @NgModule({
   imports: [

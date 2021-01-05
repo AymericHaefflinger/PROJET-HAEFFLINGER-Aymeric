@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators, ReactiveFormsModule  } from '@angular/forms';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { toast } from 'materialize-css';
 import { HttpClient } from '@angular/common/http';
 import { Store, Select } from "@ngxs/store";
-import { AddUser } from "../../models/user.action";
-import { UserState } from "../../models/user.state";
+import { AddUser } from "../../models/user/user.action";
+import { UserState } from "../../models/user/user.state";
 import { Router } from '@angular/router';
 
 @Component({
