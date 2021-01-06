@@ -18,12 +18,44 @@
 
   <div class="recapContainer">
     <h4>Modifier vos informations</h4>
-    <ul class="collection with-header containerPadding">
-      <li> <a>Modifier le prénom</a> </li>
-      <li> <a>Modifier le nom</a> </li>
-      <li> <a>Modifier le mail</a> </li>
-      <li> <a>Modifier le mot de passe</a> </li>
-    </ul>
+    <form [formGroup]="compteForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group" >
+          <label>
+              Nom
+              <input  type="text"  class="form-control" formControlName="name" placeholder="Entrez votre nouveau nom" >
+          </label>
+          <div *ngIf="name.invalid && name.errors.number">
+            <p class="has-error">Votre nom ne peut pas contenir de numéro.</p>
+          </div>
+      </div>
+      <div class="form-group">
+          <label>
+              Prénom
+              <input type="text"  class="form-control" formControlName="surname"  placeholder="Entrez votre nouveau prénom" >
+          </label>
+           <div *ngIf="surname.invalid && surname.errors.number">
+            <p class="has-error">Votre prénom ne peut pas contenir de numéro.</p>
+          </div>
+      </div>
+      <div class="form-group">
+          <label>
+              Adresse E-mail
+              <input type="email"  class="form-control" formControlName="mail"  placeholder="Entrez votre nouvelle adresse e-mail" >
+          </label>
+          <div *ngIf="mail.invalid && mail.errors.notAnEmailAddress">
+          <p class="has-error">L'adresse mail entrée est invalide.</p>
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label>
+              Mot de passe
+              <input type="password"  id="pass" formControlName="password"  class="form-control" placeholder="Entrez votre nouveau mot de passe" >
+          </label>
+      </div>
+      <button type="submit"  class="btn btn-primary" [disabled]="!compteForm.valid">Changer les informations</button>
+  </form>
   </div>
 
 </div>

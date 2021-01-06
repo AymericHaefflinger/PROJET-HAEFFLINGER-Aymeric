@@ -46,7 +46,8 @@ class userController
             "user" => [
                 "nom" => $userCorrect->getNom(),
                 "prenom" => $userCorrect->getPrenom(),
-                "mail" => $userCorrect->getMail()
+                "mail" => $userCorrect->getMail(),
+                "mdp" => $userCorrect->getMdp()
             ],
             "success" => true
         ]));
