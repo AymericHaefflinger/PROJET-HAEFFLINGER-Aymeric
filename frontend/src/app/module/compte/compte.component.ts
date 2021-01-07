@@ -14,7 +14,7 @@ import { User } from "../../models/user/user";
 import { UserState } from "../../models/user/user.state";
 import { HttpClient } from '@angular/common/http';
 import { toast } from 'materialize-css';
-
+import { AddUser } from "../../models/user/user.action";
 
 
 @Component({
@@ -85,10 +85,15 @@ export class CompteComponent {
      this.http.post<any>("/api/user/modify", body.toString(),
      { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
      .subscribe(data => {
-      toast({html: 'Connexion réussie!', classes: 'rounded'});
+      this.userIsModified(data.user);
      }, error => {
-      toast({html: 'Mail déja utilisé ou problème dans les champs remplis!', classes: 'rounded'});
+      toast({html: 'Problème lors de la modification!', classes: 'rounded'});
      });
+  }
+
+  userIsModified(u: User){
+    toast({html: 'Modification réussie!', classes: 'rounded'});
+    this.store.dispatch(new AddUser(u)).subscribe();
   }
   
   // validators

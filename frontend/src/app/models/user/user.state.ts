@@ -53,13 +53,13 @@ export class UserState {
   disconnect
   ({getState, patchState} : StateContext<UserStateModel>, 
     {} : DisconnectUser){
-  
       patchState({
           user: null,
           isConnected: false,
           token: ""
       });
   }
+  
   @Action(NewJwt)
   newJwt(
     {getState, patchState} : StateContext<UserStateModel>,

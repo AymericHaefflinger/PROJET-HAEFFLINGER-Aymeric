@@ -9,6 +9,7 @@ import { ArticleState } from "../../models/article/article.state";
 import { User } from "../../models/user/user";
 import { UserState } from "../../models/user/user.state";
 import { Observable } from "rxjs";
+import { DisconnectUser } from "../../models/user/user.action";
 
 @Component({
   selector: "header",
@@ -26,5 +27,10 @@ export class HeaderComponent {
     this.articlePanier$ = this.store.select(ArticleState.getArticles);
       this.user$ = this.store.select(UserState.getUser);
     }
+
+  disconnectUser()
+  {
+    location.reload();
+  }
   
 }

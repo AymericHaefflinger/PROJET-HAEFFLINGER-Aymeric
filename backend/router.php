@@ -10,6 +10,7 @@ return function (App $app){
     $app->group('/user', function(Group $group){
         $group->post('/login', "App\controller\userController:login");
         $group->post('/register', "App\controller\userController:register");
+        $group->post('/modify', "App\controller\userController:modify");
     });
 
     $app->group('/article', function(Group $group){

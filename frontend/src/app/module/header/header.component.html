@@ -2,6 +2,7 @@
     <div class="nav-wrapper teal lighten-2">
       <a routerLink="/" class="brand-logo">Soc&Thé</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li *ngIf="(user$ | async) != null" (click)="disconnectUser()"><a>Se déconnecter</a></li>
         <li *ngIf="(user$ | async) != null"><a routerLink="/compte">Mon Compte</a></li>
         <li *ngIf="(user$ | async) == null"><a routerLink="/auth">Connexion</a></li>
         <li *ngIf="(user$ | async) == null"><a routerLink="/register">S'inscrire</a></li>
