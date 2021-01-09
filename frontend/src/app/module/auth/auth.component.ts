@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserAuth, User } from '../../models/user/user';
 import { toast } from 'materialize-css';
 import { Store, Select } from "@ngxs/store";
-import { AddUser } from "../../models/user/user.action";
+import { AddUser, NewJwt } from "../../models/user/user.action";
 import { UserState } from "../../models/user/user.state";
 import { Router } from '@angular/router';
 
@@ -50,23 +50,24 @@ export class AuthComponent implements OnInit {
     body.set('mdp', this.password.value);
 
     this.httpClient.post<any>("/api/user/login", body.toString(),
-     { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-     .subscribe(data => {
-       this.apiSuccess(data); 
+      { headers: { 'content-type': 'application/x-www-form-urlencoded' }, observe: 'response' }, )
+    .subscribe(response => {
+      this.apiSuccess(response, response.headers.get('Authorization')); 
      }, error => {
       toast({html: 'Problème de connexion ou d\'identifiant!', classes: 'rounded'});
      });
   }
 
 
-  apiSuccess(data){
+  apiSuccess(data, jwt){
     toast({html: 'Connexion réussie!', classes: 'rounded'});
-    this.addUser(data.user);
+    this.addUser(data.body.user, jwt);
     this.router.navigate(['/compte']);
   }
 
-  addUser(u: User) {
+  addUser(u: User, j: string) {
     this.store.dispatch(new AddUser(u)).subscribe();
+    this.store.dispatch(new NewJwt("Bearer " + j));
   }
 
   ngOnInit() {

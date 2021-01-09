@@ -5,7 +5,7 @@ create user 'apiWeb'@'localhost';
 grant all privileges on PROJET_WEB_HAEFFLINGER.* to 'apiWeb'@'localhost';
 
 DROP TABLE IF EXISTS user;
-CREATE TABLE user (
+CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
     mail VARCHAR(120) NOT NULL, 
     nom VARCHAR(120) NOT NULL, 

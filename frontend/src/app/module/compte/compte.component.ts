@@ -10,7 +10,7 @@ import { ArticleState } from "../../models/article/article.state";
 import { Observable } from "rxjs";
 import { AddArticle } from "../../models/article/article.action";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "../../models/user/user";
+import { User, userStateModel } from "../../models/user/user";
 import { UserState } from "../../models/user/user.state";
 import { HttpClient } from '@angular/common/http';
 import { toast } from 'materialize-css';

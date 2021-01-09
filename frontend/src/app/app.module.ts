@@ -12,8 +12,9 @@ import { CompteComponent } from "./module/compte/compte.component";
 import { AuthComponent } from "./module/auth/auth.component";
 import { registerComponent } from "./module/register/register.component";
 import { HttpServiceService } from "../http-service.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { ApiHttpInterceptor } from './api-http-interceptor';
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -42,7 +43,9 @@ import { UserState } from "./models/user/user.state"
     registerComponent
   ],
   bootstrap: [AppComponent],
-  providers: [HttpServiceService],
+  providers: [HttpServiceService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true 
+    }],
   exports: [AppRoutingModule, HeaderComponent, ProduitComponent]
 })
 export class AppModule {}

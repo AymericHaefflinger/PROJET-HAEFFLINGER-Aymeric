@@ -1,6 +1,6 @@
-Article:
+Users:
     type: entity
-    table: article
+    table: users
     id:
         id:
             type: integer
@@ -17,13 +17,19 @@ Article:
             length: null
             options:
                 fixed: false
-        prix:
+        prenom:
             type: text
             nullable: true
             length: null
             options:
                 fixed: false
-        img:
+        mail:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        mdp:
             type: text
             nullable: true
             length: null

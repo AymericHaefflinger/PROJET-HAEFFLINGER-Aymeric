@@ -5,7 +5,7 @@ namespace App\controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Container\ContainerInterface;
-use User;
+use Users;
 use Firebase\JWT\JWT;
 
 
@@ -22,7 +22,7 @@ class userController
         $mail = $user["mail"] ?? "_";
         $mdp = $user["mdp"] ?? "_";
 
-        $userRepo = $entityManager->getRepository('User');
+        $userRepo = $entityManager->getRepository('Users');
         $userCorrect = $userRepo->findOneBy(array("mail" => $mail, "mdp" => $mdp));
 
         if(!$userCorrect){
@@ -62,13 +62,13 @@ class userController
 
         $value = $request->getParsedBody();
         $mail = $value["mail"];
-        $userRepo = $entityManager->getRepository('User');
+        $userRepo = $entityManager->getRepository('Users');
         $userExist = $userRepo->findOneBy(array("mail" => $mail));
         
         if(!$userExist){
 
 
-            $user = new User;
+            $user = new Users;
             $user->setNom($value["nom"]);
             $user->setPrenom($value["prenom"]);
             $user->setMail($value["mail"]);
@@ -130,7 +130,7 @@ class userController
         $mdp = $value["mdp"];
         $newMail = $value["mail"];
 
-        $userRepo = $entityManager->getRepository('User');
+        $userRepo = $entityManager->getRepository('Users');
         $uus = $entityManager->getConnection();
 
         $userExist = $userRepo->findOneBy(array("mail" => $oldMail));
@@ -141,10 +141,12 @@ class userController
 
         if($userExist && $mailOk)
         {
-            $uus->executeQuery('UPDATE user SET 
-            nom =  "'.$nom.'", prenom = "'.$prenom.'", 
-            mail = "'.$newMail.'", mdp = "'.$mdp.'" 
-            WHERE mail = "'.$oldMail.'"');
+            $uus->executeQuery("UPDATE users SET 
+             nom = '".$nom."',
+             prenom = '".$prenom."', 
+             mail = '".$newMail."',
+             mdp = '".$mdp."' 
+             WHERE mail = '".$oldMail."'");
 
             $result = [
                 "success" => true,
