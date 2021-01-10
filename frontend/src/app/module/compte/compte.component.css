@@ -12,3 +12,7 @@ body {
   .containerPadding{
     padding: 10px;
   }
+  .recapContainer{
+    width: 50%;
+    margin: auto;
+  }

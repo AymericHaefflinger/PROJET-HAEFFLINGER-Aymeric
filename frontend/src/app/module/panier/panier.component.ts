@@ -27,6 +27,5 @@ export class PanierComponent {
 
   removeArticle(a: Article) {
     this.store.dispatch(new RemoveArticle(a)).subscribe();
-    console.log(this.prixPanier$);
   }
 }

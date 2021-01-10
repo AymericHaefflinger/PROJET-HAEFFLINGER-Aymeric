@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -20,7 +20,8 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { NgxsModule } from "@ngxs/store";
 import { ArticleState } from "./models/article/article.state";
-import { UserState } from "./models/user/user.state"
+import { UserState } from "./models/user/user.state";
+import { CustomErrorHandler } from "./errorHandler.module";
 
 @NgModule({
   imports: [
@@ -45,6 +46,10 @@ import { UserState } from "./models/user/user.state"
   bootstrap: [AppComponent],
   providers: [HttpServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true 
+    },
+    {
+      provide: ErrorHandler, 
+      useClass: CustomErrorHandler
     }],
   exports: [AppRoutingModule, HeaderComponent, ProduitComponent]
 })
