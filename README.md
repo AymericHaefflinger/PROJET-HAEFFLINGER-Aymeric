@@ -1,4 +1,4 @@
-# TP06_Haefflinger_Aymeric
+# PROJET-HAEFFLINGER-Aymeric
 
 Instructions pour lancer le projet :
 
@@ -10,4 +10,3 @@ Instructions pour lancer le projet :
 -> composer install
 -> php -S 127.0.0.1:8080 -t public
 
-Un script de création pour la base de donnée est disponible dans le dossier backend/app/Doctrine/SQL.
