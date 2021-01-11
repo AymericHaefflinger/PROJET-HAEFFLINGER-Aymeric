@@ -1,5 +1,8 @@
 # PROJET-HAEFFLINGER-Aymeric
 
+Voici le lien du projet hébergé sur Heroku :
+https://projet-web-cnam-app.herokuapp.com/accueil
+
 Instructions pour lancer le projet :
 
 -Dans le dossier frontend
